@@ -2,12 +2,12 @@
 
 from datetime import datetime
 
-from . import CONFIG_FILE
-from . import SCHEMA_FILE
-
-
 from CleanEmonCore.CouchDBAdapter import CouchDBAdapter
+from CleanEmonCore import CONFIG_FILE as DB_CONFIG_FILE
 from CleanEmonCore.models import EnergyData
+
+from . import CONFIG_FILE as EMON_CONFIG_FILE
+from . import SCHEMA_FILE
 
 from .EmonPiAdapter import EmonPiAdapter
 
@@ -24,8 +24,8 @@ class Reporter(Observer):
         super().__init__(timer)
 
         self.log_to_screen = log_to_screen
-        self.emon_adapter = EmonPiAdapter(CONFIG_FILE, schema_file=SCHEMA_FILE)
-        self.db_adapter = CouchDBAdapter(CONFIG_FILE)
+        self.emon_adapter = EmonPiAdapter(EMON_CONFIG_FILE, schema_file=SCHEMA_FILE)
+        self.db_adapter = CouchDBAdapter(DB_CONFIG_FILE)
         self.current_document_id = None
         self.current_date = None
 

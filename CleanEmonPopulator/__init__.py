@@ -4,7 +4,7 @@ import os
 from .EmonPiAdapter import EmonPiAdapter
 
 _DATA_DIR_NAME = "data"
-_CONFIG_FILENAME = "emon-utils.cfg"
+_CONFIG_FILENAME = "emon.cfg"
 _SCHEMA_FILENAME = "schema.json"
 
 PACKAGE_DIR = os.path.dirname(__file__)

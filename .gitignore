@@ -5,3 +5,7 @@ __pycache__/
 dist/
 
 .idea
+
+schema.json
+db.cfg
+emon.cfg
