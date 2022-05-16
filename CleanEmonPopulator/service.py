@@ -65,7 +65,8 @@ class Reporter(Observer):
                 print("Changed date")
             document_id = self.db_adapter.get_document_id_for_date(date)
             if not document_id:
-                document_id = self.db_adapter.create_document(initial_data={"date": date})
+                energy_data = EnergyData(date=date)
+                document_id = self.db_adapter.create_document(initial_data=energy_data)
 
             self.current_document_id = document_id
             self.current_date = date
