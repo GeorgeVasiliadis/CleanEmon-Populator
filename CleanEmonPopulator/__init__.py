@@ -1,5 +1,4 @@
 """A simple integration set of utilities connecting EmonPi's ecosystem with CouchDB"""
-__version__ = "0.1"
 
 import os
 from .EmonPiAdapter import EmonPiAdapter
