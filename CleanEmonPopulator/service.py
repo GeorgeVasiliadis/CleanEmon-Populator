@@ -7,6 +7,7 @@ from . import SCHEMA_FILE
 
 
 from CleanEmonCore.CouchDBAdapter import CouchDBAdapter
+from CleanEmonCore.models import EnergyData
 
 from .EmonPiAdapter import EmonPiAdapter
 
@@ -36,7 +37,8 @@ class Reporter(Observer):
 
         self._check_date_change()
         data = self.emon_adapter.fetch_data()
-        status = self.db_adapter.append_energy_data(data, document=self.current_document_id)
+        energy_data = EnergyData(energy_data=[data])
+        status = self.db_adapter.append_energy_data(energy_data, document=self.current_document_id)
 
         if self.log_to_screen:
             print(self.current_document_id)
