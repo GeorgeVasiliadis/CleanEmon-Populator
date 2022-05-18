@@ -11,8 +11,8 @@ from . import SCHEMA_FILE
 
 from .EmonPiAdapter import EmonPiAdapter
 
-from .Events import Timer
-from .Events import Observer
+from CleanEmonCore.Events import Timer
+from CleanEmonCore.Events import Observer
 
 
 class Reporter(Observer):

@@ -1,5 +1,5 @@
 from CleanEmonPopulator.service import Reporter
-from CleanEmonPopulator.Events.builtins import Timer
+from CleanEmonCore.Events.builtins import Timer
 
 
 def test_reporter():
