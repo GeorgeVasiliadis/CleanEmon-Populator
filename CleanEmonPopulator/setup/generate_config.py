@@ -1,5 +1,6 @@
 import configparser
 
+
 def generate_config(config_file):
     config = configparser.ConfigParser(interpolation=None)
     config["Emon"] = {}
