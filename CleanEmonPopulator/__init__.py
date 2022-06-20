@@ -5,7 +5,7 @@ import os
 from .EmonPiAdapter import EmonPiAdapter
 from CleanEmonCore.dotfiles import get_dotfile
 
-_CONFIG_FILENAME = "emon.cfg"
+_CONFIG_FILENAME = "clean.cfg"
 _SCHEMA_FILENAME = "schema.json"
 
 PACKAGE_DIR = os.path.dirname(__file__)
