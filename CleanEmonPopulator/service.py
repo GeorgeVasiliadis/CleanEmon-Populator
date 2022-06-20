@@ -8,6 +8,7 @@ from CleanEmonCore.models import EnergyData
 
 from . import CONFIG_FILE as EMON_CONFIG_FILE
 from . import SCHEMA_FILE
+from .buffer import AutoBuffer
 
 from .EmonPiAdapter import EmonPiAdapter
 
@@ -28,6 +29,7 @@ class Reporter(Observer):
         self.db_adapter = CouchDBAdapter(DB_CONFIG_FILE)
         self.current_document_id = None
         self.current_date = None
+        self.buffer = AutoBuffer(12)
 
     def on_notify(self, *args, **kwargs):
         """This function implements the fundamental fetch-update-send loop.
@@ -38,7 +40,7 @@ class Reporter(Observer):
         self._check_date_change()
         data = self.emon_adapter.fetch_data()
         energy_data = EnergyData(energy_data=[data])
-        status = self.db_adapter.append_energy_data(energy_data, document=self.current_document_id)
+        status = self.buffer.append_data(energy_data, document=self.current_document_id)
 
         if self.log_to_screen:
             print(self.current_document_id)
