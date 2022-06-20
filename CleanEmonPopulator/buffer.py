@@ -12,9 +12,14 @@ class AutoBuffer:
         self._count = 0
 
     def _append_hook(self):
+        cleared = False
+
         self._count += 1
         if self._count >= self._capacity:
             self._clear()
+            cleared = True
+
+        return cleared
 
     def _clear(self):
         for document, data_list in self.data.copy().items():
@@ -28,5 +33,6 @@ class AutoBuffer:
 
         self.data[document].append(energy_data)
 
-        self._append_hook()
+        cleared = self._append_hook()
 
+        return cleared
