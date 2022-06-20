@@ -12,15 +12,14 @@ class AutoBuffer:
         self._count = 0
 
     def _append_hook(self):
-        self._capacity += 1
+        self._count += 1
         if self._count >= self._capacity:
             self._clear()
 
     def _clear(self):
-        for document, data_list in self.data:
+        for document, data_list in self.data.copy().items():
             self.db_adapter.append_energy_data(*data_list, document=document)
-            # todo create the batch/chunk/update and massively update the db
-            # todo modify db_adapter to handle multiple values *energy_data
+            del self.data[document]
         self._count = 0
 
     def append_data(self, energy_data: EnergyData, document: str):
