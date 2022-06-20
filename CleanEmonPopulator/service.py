@@ -29,7 +29,7 @@ class Reporter(Observer):
         self.db_adapter = CouchDBAdapter(DB_CONFIG_FILE)
         self.current_document_id = None
         self.current_date = None
-        self.buffer = AutoBuffer(12)
+        self.buffer = AutoBuffer(60)
 
     def on_notify(self, *args, **kwargs):
         """This function implements the fundamental fetch-update-send loop.
