@@ -39,7 +39,7 @@ class Reporter(Observer):
 
         self._check_date_change()
         data = self.emon_adapter.fetch_data()
-        energy_data = EnergyData(energy_data=[data])
+        energy_data = EnergyData(date=self.current_date, energy_data=[data])
         status = self.buffer.append_data(energy_data, document=self.current_document_id)
 
         if self.log_to_screen:
