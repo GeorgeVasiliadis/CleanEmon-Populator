@@ -8,7 +8,6 @@ from CleanEmonCore.dotfiles import get_dotfile
 _CONFIG_FILENAME = "clean.cfg"
 _SCHEMA_FILENAME = "schema.json"
 
-PACKAGE_DIR = os.path.dirname(__file__)
 
 # Check if config-file lies in directory of execution
 # If not, consider working with the global one
