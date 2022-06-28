@@ -7,8 +7,8 @@ parser = argparse.ArgumentParser(prog="CleanEmonPopulator", description="The CLI
 subparsers = parser.add_subparsers(help='commands')
 
 # Service
-populate_parser = subparsers.add_parser("service", help="Run a service")
-populate_parser.add_argument("service_name", action="store", choices=["populate"])
+service_parser = subparsers.add_parser("service", help="Run a service")
+service_parser.add_argument("service_name", action="store", choices=["populate"])
 
 # Script
 script_parser = subparsers.add_parser("script", help="Run a script")
