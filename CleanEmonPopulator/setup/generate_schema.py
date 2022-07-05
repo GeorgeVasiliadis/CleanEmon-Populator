@@ -1,10 +1,14 @@
 import json
 
+from CleanEmonCore.dotfiles import get_dotfile
+from CleanEmonCore.dotfiles import _CONFIG_FILENAME
+
+from .. import _SCHEMA_FILENAME
 from ..EmonPiAdapter import EmonPiAdapter
 
 
-def generate_schema(config_file, schema_file):
-    emon = EmonPiAdapter(config_file)
+def generate_schema(schema_file=_SCHEMA_FILENAME):
+    emon = EmonPiAdapter(get_dotfile(_CONFIG_FILENAME))
     list_ = emon.get_feed_list()
 
     print("Listing available feeds:\n")
