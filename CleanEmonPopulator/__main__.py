@@ -12,11 +12,7 @@ service_parser.add_argument("service_name", action="store", choices=["populate"]
 
 # Script
 script_parser = subparsers.add_parser("script", help="Run a script")
-script_parser.add_argument("script_name", action="store", choices=["setup"])
-
-# Generate Schema
-subparsers.add_parser("generate-schema", help="Generate the schema file")
-script_parser.add_argument("script_name", action="store", choices=["setup"])
+script_parser.add_argument("script_name", action="store", choices=["generate-schema"])
 
 args = parser.parse_args()
 
@@ -24,5 +20,6 @@ if args.command == "service":
     if args.service_name == "populate":
         run()
 
-elif args.command == "generate-schema":
-    generate_schema()
+elif args.command == "script":
+    if args.script_name == "generate-schema":
+        generate_schema()
