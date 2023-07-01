@@ -1,6 +1,5 @@
 {
   "_id": "_design/api",
-  "_rev": "25-53fd64ea4726da4f6d94616273ce90fa",
   "views": {
     "daily_consumption": {
       "map": "function(doc) {\n  if (doc.energy_data) {\n    var firstPower = null;\n    var lastPower = null;\n    var kwh;\n    for (var i = 0; i < doc.energy_data.length; i++) {\n      kwh = doc.energy_data[i].kwh;\n      if (kwh !== null) {\n        if (firstPower === null) {\n          firstPower = kwh;\n          break;\n        }\n      }\n    }\n    for (i = doc.energy_data.length - 1; i >= 0; i--) {\n      kwh = doc.energy_data[i].kwh;\n      if (kwh !== null) {\n        lastPower = kwh;\n        break;\n      }\n    }\n    if (firstPower !== null && lastPower !== null) {\n      emit(doc.date, lastPower - firstPower);\n    }\n  }\n}\n",
